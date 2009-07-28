@@ -1,0 +1,95 @@
+require 'capistrano/version'
+load 'deploy' if respond_to?(:namespace) # cap2 differentiator
+
+set(:svn_user) do
+  Capistrano::CLI.ui.ask "Enter a username to access the SVN repository: "
+end
+set :application, "rentalcar"
+set :repository,  "svn+altssh://#{svn_user}@transit-dev.admin.umass.edu/usr/local/svn/rentalcar"
+
+set :oit_location, "/rentalcar"
+set :deploy_to, "/cwis/http/htdocs#{oit_location}"
+set :user, "rental"
+set :use_sudo, false
+
+set :deploy_via, :copy
+set :copy_strategy, :export
+set :copy_remote_dir, deploy_to
+
+role :app, "webadmin.oit.umass.edu"
+role :web, "webadmin.oit.umass.edu"
+
+# Overrides of default tasks:
+namespace :deploy do 
+  desc "Deploys your project. For our non-rails app, this just calls `update'"
+  task :default do
+    update
+  end
+  
+  desc "Alias for deploy.  A cold-deploy is the same as a 'warm' one for non-rails apps"
+  task :cold do
+    default
+  end
+  
+  desc <<-DESC
+    Rolls back to a previous version. This is handy if you ever \
+    discover that you've deployed a lemon; `cap rollback' and you're right \
+    back where you were, on the previously deployed version.
+  DESC
+  namespace :rollback do
+    task :default do
+      code
+    end
+  end
+
+  desc <<-DESC
+    [internal] Touches up the released code. This is called by update_code \
+    after the basic deploy finishes.
+    
+    This task will make the release group-writable (if the :group_writable \
+    variable is set to true, which is the default).
+  DESC
+  task :finalize_update, :except => { :no_release => true } do
+    run "chmod -R g+w #{latest_release}" if fetch(:group_writable, true)
+  end
+  
+  desc <<-DESC
+    Prepares one or more servers for deployment. Before you can use any \
+    of the Capistrano deployment tasks with your project, you will need to \
+    make sure all of your servers have been prepared with `cap deploy:setup'. When \
+    you add a new server to your cluster, you can easily run the setup task \
+    on just that server by specifying the HOSTS environment variable:
+
+      $ cap HOSTS=new.server.com deploy:setup
+
+    It is safe to run this task on servers that have already been set up; it \
+    will not destroy any deployed revisions or data.
+  DESC
+  task :setup, :except => { :no_release => true } do
+    dirs = [deploy_to, releases_path]
+    run "umask 02 && mkdir -p #{dirs.join(' ')}"
+    
+    #This creates a .htaccess file in the deploy directory that redirects
+    #requests to the deploy directory (ie /transit) to the current release
+    #directory (ie /transit/current) behind-the-scenes.  This wouldn't be
+    #necisary if we had controll over the server.
+    rewrite_file = <<-EOF
+      RewriteEngine On
+      RewriteRule ^/cwis.* #{oit_location}/ [R,L]
+      RewriteRule (.*) #{oit_location}/current/$1
+    EOF
+    put rewrite_file, "#{deploy_to}/.htaccess" 
+  end
+  
+  #Tasks available by default with Capistrano that don't do anything for us
+  task :migrate do
+  end
+  task :migrations do
+  end
+  task :restart do
+  end
+  task :start do
+  end
+  task :stop do
+  end
+end
