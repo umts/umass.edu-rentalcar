@@ -1,0 +1,63 @@
+#schedules{
+  width: 440px;
+  list-style: none ;
+}
+
+#schedules .header{
+  background-color: #993334;
+  color: #FFFFFF;
+  font-weight: bold;
+  border-top: solid 1px rgb(240, 240, 240);
+  border-bottom: solid 1px rgb(240, 240, 240);
+}
+#schedules .last{
+  border-bottom: solid 1px rgb(240, 240, 240);
+}
+#schedules li{
+  border-left: solid 1px rgb(240, 240, 240);
+  border-right: solid 1px rgb(240, 240, 240);
+  padding: 3px;
+}
+.scheduleBounds{
+  border-color: rgb(240, 240, 240);
+  width: 500px;
+}
+
+.schedule {
+  float:left;
+  height:400px;
+  overflow:scroll;
+  position:static;
+  border-collapse: collapse;
+}
+.scheduleHeader{
+  border-collapse: collapse;
+}
+
+
+#container #main_table #scheduleDark td{
+  background-color: #EEEEEE;
+  border-color: rgb(240, 240, 240);
+  font-size: 12px;
+  font-weight: bold;
+}
+
+#container #main_table #scheduleDark{
+  background-color: #EEEEEE
+  border-color: rgb(240, 240, 240);
+  font-size: 12px;
+  font-weight: bold;
+}
+
+#container #main_table #scheduleLight td{
+  background-color: rgb(255, 255, 255);
+  border-color: rgb(240, 240, 240);
+  font-size: 12px;
+  font-weight: bold;
+}
+#container #main_table #scheduleLight{
+  background-color: rgb(255, 255, 255);
+  border-color: rgb(240, 240, 240);
+  font-size: 12px;
+  font-weight: bold;
+}

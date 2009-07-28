@@ -1,0 +1,30 @@
+#container #main_table #right .contacts{
+  border-collapse: collapse;
+  border: 1px solid rgb(200, 200, 200);
+}
+#container #main_table #right .contacts .even{
+  background-color: white;
+}
+#container #main_table #right .contacts th{
+  height: 25px;
+  background-color: white;
+}
+#container #main_table #right .links{
+  border-collapse: collapse;
+  border: 1px solid rgb(200, 200, 200);
+}
+#container #main_table #right .links th{
+  height: 25px;
+  background-color: white;
+}
+#container #main_table #right .contacts td{
+  width: 300px;
+  border: none;
+}
+#container #main_table #right .links td{
+  border: none;
+}
+
+#container #main_table #right .contacts .first{
+  width: 300px;
+}

@@ -1,0 +1,10 @@
+#directions {
+  padding: 5px;
+  margin: 5px;
+  width: 500px;
+}
+
+#container #main_table #right #directions td{
+  background-color: #EEEEEE;
+  border-color: #EEEEEE;
+}

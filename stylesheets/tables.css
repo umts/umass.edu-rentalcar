@@ -1,0 +1,12 @@
+tr .even{
+  background-color: white
+}
+
+tr .odd{
+  background-color: #EEEEEE
+}
+
+tr .empty{
+  background-color: #000000;
+  color: white;
+}

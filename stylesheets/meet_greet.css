@@ -1,0 +1,14 @@
+#container #main_table #right #table {
+  color: black;
+  font-family: Verdona, Arial, Helvetica, sans-serif;
+  font-size: 12px;
+  border-collapse: collapse;
+}
+#container #main_table #right #table td{
+  padding: 5px;
+  border: solid 2px #EEEEEE;
+}
+.required{
+  color: red;
+  font-size: 18px;
+}

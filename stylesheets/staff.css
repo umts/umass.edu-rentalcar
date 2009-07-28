@@ -1,0 +1,10 @@
+#container #main_table #right .contacts{
+  border-collapse: collapse;
+}
+#container #main_table #right .contacts td{
+  border: none;
+}
+
+#container #main_table #right .contacts tr.supervisor{
+  background-color: #dfdfdf;
+}

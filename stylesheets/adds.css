@@ -1,0 +1,30 @@
+#container #vehiclemenu {
+  border-top: solid 1px white;
+	font-size: 13px;
+	width: auto;
+	height: auto;
+	background-color: #999966;
+	font-weight: bold;
+	font-family: Arial, Helvetica, sans-serif;
+	padding: 10px 60px;
+	text-align: left;
+	letter-spacing: 1px;
+}
+#container #vehiclemenu a {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 13px;
+	color: #FFFFFF;
+	font-weight: bold;
+	text-decoration: none;
+	letter-spacing: 1px;
+	padding-left: 45px;
+}
+#container #vehiclemenu a:hover {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 13px;
+	color: #CCCCCC;
+	font-weight: bold;
+	text-decoration: none;
+	letter-spacing: 1px;
+	padding-left: 45px;
+}

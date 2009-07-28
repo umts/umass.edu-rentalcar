@@ -1,0 +1,9 @@
+#container #main_table #right #rates{
+  border-collapse: collapse;
+}
+
+#container #main_table #right #rates td{
+  background-color: #EEEEEE;
+  padding: 5px;
+  border: solid black 1px;
+}

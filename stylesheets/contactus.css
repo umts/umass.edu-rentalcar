@@ -1,0 +1,15 @@
+#contacts{
+  width: 400px;
+  font-size: 14px;
+  border-collapse: collapse;
+  border: none;
+}
+#container #main_table #right #page_text_field #contacts  tr{
+  border: none;
+}
+#container #main_table #right #page_text_field #contacts  td{
+  border: none;
+}
+#container #main_table #right #contacts .number{
+  width: 150px;
+}
