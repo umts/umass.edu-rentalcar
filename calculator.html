@@ -108,31 +108,103 @@ function konami(e) {
 
             <!-- InstanceBeginEditable name="Content" -->
             <td id="right">
-              <div id="page_title">Rental Cost Comparison</div>
+              <div id="page_title">Rental Cost Calculator</div>
               <div id="page_text_field">
-                 
-                Here is some information to help you compare rental costs to the standard reimbursement rate. Please pay special attention to the disclaimers when making a decision.
-                <br>
-                <br>
-                <img src="images/cost_graph.png"></img>
                 
-                Or for a table of values:
-                <br>
-                <a href="pdf/cost_comparison.pdf">Cost Comparison Table</a>
-                <br>
-                <br>
-                Disclaimer:
-                <ul>
-                  <li>The provided rental costs are based on upon those available to UMass from Enterprise</li>
-                  <li>The price of fuel is estimated at $2.50, the prevailing national rate as of 07/01/2009</li>
-                  <li>The standard reimbursement estimate is based on the Standard Reimbursement Rate ($0.55), as of 07/01/2009</li>
-                </ul>
-                <br>
-                <br>
-                If you would like to make a more current comparison, please visit the <a href="calculator.html">Mileage Cost Calculator</a>.
 
 
-                
+                                
+                <form action="calc.php" method="post">
+                <table>
+                  
+                  <tr>
+                    <td>Vehicle Type:</td>
+                    <td>
+                      <select name="vehicle_type">
+                        <option>Compact</option>
+                        <option>Intermediate</option>
+                        <option>Standard</option>
+                        <option>Full Size</option>
+                        <option>Premium</option>
+                        <option>Pickup Truck</option>
+                        <option>Luxury</option>
+                        <option>Minivan</option>
+                        <option>SUV</option>
+                        <option>12 Pax Van</option>
+                        <option>Cargo Van</option>
+                      </select>
+                    </td>
+                  </tr>
+                  
+                  <tr>
+                    <td>Total days in Trip:</td>
+                    <td><input type="text" name="days_in_trip"></input></td>
+                  </tr>
+                  
+                  <tr>
+                    <td>Destination:</td>
+                    <td>
+                      <select name="dest">
+                        <option>Boston</option>
+                        <option>Bradley Int'l</option>
+                        <option>Shrewsbury</option>
+                      </select>
+                    </td>
+                  </tr>
+                  
+                  <tr>
+                    <td></td>
+                    <td>or use a round trip distance:</td>
+                    <td><input type="checkbox" name="use_distance_instead"></input></td>
+                    <td><input type="text" name="distance"></input></td>
+                    <td>(Miles)</td>
+                  </tr> 
+                  
+                  <tr>
+                    <td>Cost of Fuel:</td>
+                    <td><input type="text" name="cost_of_fuel"></input></td>
+                    <td>(Dollars)</td>
+                  </tr>
+                  
+                  <tr>
+                    <td>Reimbursment Rate:</td>
+                    <td><input type="text" value="0.55" name="reim_rate"></input></td>
+                    <td>(Dollars)</td>
+                  </tr>
+                  
+                  <!--<tr>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                  
+                  <tr>
+                    <td></td>
+                    <td></td>
+                  </tr>-->
+                  
+                  <tr>
+                    <td>
+                      <input type="submit" value="Make Estimate"></input>
+                    </td>
+                  </tr>
+
+                </table>
+                </form>
+
+                <br>
+                <br>
+
+               To get the most accurate estimate possible, try using the following sites to fill in the most up to date milage and fuel cost:<br><br>
+
+                <a href="http://www.fuelgaugereport.com/">AAA Daily Fuel Report</a><br>
+
+                <a href="http://maps.google.com/">Google Maps</a><br>
+
+                <a href="http://www.mapquest.com/">MapQuest</a><br>
+  
+                <br>
+                <br>
+ 
 
               </div>
             </td>   
@@ -158,3 +230,4 @@ function konami(e) {
   </div>
   </body>
 </html>
+
