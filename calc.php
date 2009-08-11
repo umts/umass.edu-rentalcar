@@ -10,7 +10,8 @@ $cost_of_fuel = $_POST['cost_of_fuel'];
 $reimbursment_rate = $_POST['reim_rate'];
 $chosen_vehicle_rate = '0';
 $chosen_vehicle_fuel_rating = '0';
-$fuel_used = '0';
+$cost_of_fuel_used = '0';
+$cost_of_rental = '0';
 $final_cost = '0';
 
 
@@ -59,12 +60,12 @@ switch($_POST['vehicle_type'])
   }
 
 //fucking doing the math (please do not get on my case about the lack of functions, this was just thrown together)
-
-
-
+$cost_of_fuel_used = ($round_trip_distance / $chosen_vehicle_fuel_rating) * $cost_of_fuel;
+$cost_of_rental = $chosen_vehicle_rate * $days_in_trip;
+$final_cost = $cost_of_fuel_used + $cost_of_rental;
 
 //crappy print statements
-print "Renting a $vehicle_type type vehicle, at $$cost_of_fuel a gallon, for $days_in_trip day(s), making a $round_trip_distance mile trip will cost your department approximately TONS OF MONIES! <br> <br>";
+print "Renting a $vehicle_type type vehicle, at $$cost_of_fuel a gallon, for $days_in_trip day(s), making a $round_trip_distance mile trip will cost your department approximately $$final_cost <br> <br>";
 
 print "Alternatively, it will cost MORE TONS OF MONIES!";
 
