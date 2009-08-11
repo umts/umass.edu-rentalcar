@@ -1,5 +1,3 @@
-<html>
-  <body>
-<? println "yeah"; ?>
-  </body>
-</html>
+<?
+print "Damn it feels good to be a gangstar";
+?>
