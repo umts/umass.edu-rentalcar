@@ -13,6 +13,7 @@ $chosen_vehicle_fuel_rating = '0';
 $cost_of_fuel_used = '0';
 $cost_of_rental = '0';
 $final_cost = '0';
+$reim_final_cost = '0';
 
 
 //Assign Values to the Vehicle rental cost & the MPG rating of the car
@@ -63,11 +64,15 @@ switch($_POST['vehicle_type'])
 $cost_of_fuel_used = ($round_trip_distance / $chosen_vehicle_fuel_rating) * $cost_of_fuel;
 $cost_of_rental = $chosen_vehicle_rate * $days_in_trip;
 $final_cost = $cost_of_fuel_used + $cost_of_rental;
+$final_cost = round($final_cost, 2);
+
+$reim_final_cost = $reimbursment_rate * $round_trip_distance;
+$reim_final_cost = round(reim_final_cost, 2);
 
 //crappy print statements
-print "Renting a $vehicle_type type vehicle, at $$cost_of_fuel a gallon, for $days_in_trip day(s), making a $round_trip_distance mile trip will cost your department approximately $$final_cost <br> <br>";
+print "Renting a $vehicle_type type vehicle, at $$cost_of_fuel a gallon, for $days_in_trip day(s), making a $round_trip_distance mile trip will cost your department approximately $$final_cost. <br> <br>";
 
-print "Alternatively, it will cost MORE TONS OF MONIES!";
+print "Alternatively, it will cost your department $$reim_final_cost to use a personal verhicle with a federal reimbursment rate of $$reimbursment_rate per mile.";
 
 
 
