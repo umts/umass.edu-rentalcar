@@ -65,14 +65,16 @@ $cost_of_fuel_used = ($round_trip_distance / $chosen_vehicle_fuel_rating) * $cos
 $cost_of_rental = $chosen_vehicle_rate * $days_in_trip;
 $final_cost = $cost_of_fuel_used + $cost_of_rental;
 $final_cost = round($final_cost, 2);
+$final_cost = number_format($final_cost, 2, '.', '');
 
 $reim_final_cost = $reimbursment_rate * $round_trip_distance;
-$reim_final_cost = round(reim_final_cost, 2);
+$reim_final_cost = round($reim_final_cost, 2);
+$reim_final_cost = number_format($reim_final_cost, 2, '.', '');
 
 //crappy print statements
 print "Renting a $vehicle_type type vehicle, at $$cost_of_fuel a gallon, for $days_in_trip day(s), making a $round_trip_distance mile trip will cost your department approximately $$final_cost. <br> <br>";
 
-print "Alternatively, it will cost your department $$reim_final_cost to use a personal verhicle with a federal reimbursment rate of $$reimbursment_rate per mile.";
+print "Alternatively, it will cost your department $$reim_final_cost to use a personal vehicle with a federal reimbursment rate of $$reimbursment_rate per mile.";
 
 
 
