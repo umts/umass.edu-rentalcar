@@ -129,7 +129,7 @@ $umass_common_reim_cost = '0';
 $final_cost = '0';
 $reim_final_cost = '0';
 
-if ($_POST['use_distance_instead'] == "unchecked")
+if ($_POST['use_distance_instead'] == "use_distance_instead")
   {
     $use_round_trip = False;
   }
