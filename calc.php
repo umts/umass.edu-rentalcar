@@ -129,7 +129,7 @@ $umass_common_reim_cost = '0';
 $final_cost = '0';
 $reim_final_cost = '0';
 
-if ($_POST['use_distance_instead'] == "")
+if ($_POST['use_distance_instead'] == "unchecked")
   {
     $use_round_trip = False;
   }
@@ -156,7 +156,7 @@ switch($vehicle_type)
       $chosen_vehicle_rate = '33.99';
       $chosen_vehicle_fuel_rating = '27';
       break;
-
+  
     case 'Standard':
       $chosen_vehicle_rate = '37.99';
       $chosen_vehicle_fuel_rating = '25';
