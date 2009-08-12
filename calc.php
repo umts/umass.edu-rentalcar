@@ -213,7 +213,7 @@ if ($use_round_trip == False)
         break;
 
         case 'Shrewsbury':
-        $round_trip_distance = '150';
+        $round_trip_distance = '120';
         break;
       }
   }
