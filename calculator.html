@@ -110,10 +110,9 @@ function konami(e) {
             <td id="right">
               <div id="page_title">Rental Cost Calculator</div>
               <div id="page_text_field">
-                
-              
-                This cost calculator is designed to give a general comparison between the Rental Car Service and the standard Federal Reimbursement Rate. Make sure to fill in a round trip distance if you do not wish to use one of the destinations provided. Please use the links provided at the bottom to input the most current information. This calculator is designed to give an approximation, not an estimate. <br><br>
-                                
+                               
+
+
                 <form action="calc.php" method="post">
                 <table>
                   
@@ -153,7 +152,7 @@ function konami(e) {
                   
                   <tr>
                     <td></td>
-                    <td>or use a round trip distance:</td>
+                    <td>Or use a round trip distance:</td>
                     <td><input type="checkbox" value="use_distance" name="use_distance_instead"></input></td>
                     <td><input type="text" name="distance"></input></td>
                     <td>(Miles)</td>
@@ -166,7 +165,7 @@ function konami(e) {
                   </tr>
                   
                   <tr>
-                    <td>Reimbursment Rate:</td>
+                    <td>Reimbursement Rate:</td>
                     <td><input type="text" value="0.55" name="reim_rate"></input></td>
                     <td>(Dollars)</td>
                   </tr>
@@ -193,18 +192,21 @@ function konami(e) {
                 <br>
                 <br>
 
-               To get the most accurate estimate possible, try using the following sites to fill in the most up to date milage and fuel cost:<br><br>
-
-                <a href="http://www.fuelgaugereport.com/">AAA Daily Fuel Report</a><br>
-
-                <a href="http://maps.google.com/">Google Maps</a><br>
-
-                <a href="http://www.mapquest.com/">MapQuest</a><br>
-  
-                <br>
-                <br>
- 
-
+                For mileage and fuel cost information:
+                <ul>
+                  <li><a href="http://www.fuelgaugereport.com/">AAA Daily Fuel Report</a><br></li>
+                  <li><a href="http://maps.google.com/">Google Maps</a><br></li>
+                  <li><a href="http://www.mapquest.com/">MapQuest</a><br></li>
+                  <li><a href="http://www.umass.edu/travel/files/mileage_rate.pdf">Mileage Reimbursement Rate</a></li>
+                </ul>  
+                For an additional ways to compare:
+                <ul>  
+                  <li><a href="pdf/cost_comparison.pdf">Rental Cost Comparison Table</a></li>
+                  <li><a href="pdf/cost_comparison_graph.pdf">Rental Cost Comparison Graph</a></li>
+                  <li>The price of fuel is estimated at $2.50, the prevailing national rate as of 07/01/2009</li>
+                  <li>The standard reimbursement estimate is based on the Standard Reimbursement Rate ($0.55), as of 07/01/2009</li>
+                </ul>
+              
               </div>
             </td>   
           </tr>
