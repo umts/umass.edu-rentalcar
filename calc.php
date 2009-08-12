@@ -113,25 +113,39 @@ function konami(e) {
 
 
 <?
-//print "Damn it feels good to be a gangstar <br>";
 
+//Basic constructor w/ user imputs
 $vehicle_type = $_POST['vehicle_type'];
 $days_in_trip = $_POST['days_in_trip'];
 $destination = $_POST['dest'];
-$use_round_trip = $_POST['use_distance_instead'];
-$round_trip_distance = $_POST['distance'];
 $cost_of_fuel = $_POST['cost_of_fuel'];
-$reimbursment_rate = $_POST['reim_rate'];
+$reimbursement_rate = $_POST['reim_rate'];
+$round_trip_distance = '0';
 $chosen_vehicle_rate = '0';
 $chosen_vehicle_fuel_rating = '0';
 $cost_of_fuel_used = '0';
 $cost_of_rental = '0';
+$umass_common_reim_cost = '0';
 $final_cost = '0';
 $reim_final_cost = '0';
 
+if ($_POST['use_distance_instead'] == "")
+  {
+    $use_round_trip = False;
+  }
+  else
+    {
+      $use_round_trip = True;
+    }
+
+if ($use_round_trip == True)
+  {
+    $round_trip_distance = $_POST['distance'];
+  }
+
 
 //Assign Values to the Vehicle rental cost & the MPG rating of the car
-switch($_POST['vehicle_type'])
+switch($vehicle_type)
   {
     case 'Compact':
       $chosen_vehicle_rate = '29.99';
@@ -139,9 +153,13 @@ switch($_POST['vehicle_type'])
       break;
 
     case 'Intermediate':
+      $chosen_vehicle_rate = '33.99';
+      $chosen_vehicle_fuel_rating = '27';
       break;
 
     case 'Standard':
+      $chosen_vehicle_rate = '37.99';
+      $chosen_vehicle_fuel_rating = '25';
       break;
     
     case 'Full Size':
@@ -150,15 +168,18 @@ switch($_POST['vehicle_type'])
       break;
     
     case 'Premium':
+      $chosen_vehicle_rate = '46.99';
+      $chosen_vehicle_fuel_rating = '22';
       break;
     
     case 'Pickup Truck':
+      $chosen_vehicle_rate = '49.99';
+      $chosen_vehicle_fuel_rating = '16';
       break;
-    
-    case 'Luxury':
-      break;
-    
+        
     case 'Minivan':
+      $chosen_vehicle_rate = '59.99';
+      $chosen_vehicle_fuel_rating = '19';
       break;
     
     case 'SUV':
@@ -167,11 +188,34 @@ switch($_POST['vehicle_type'])
       break;
     
     case '12 Pax Van':
+      $chosen_vehicle_rate = '99.99';
+      $chosen_vehicle_fuel_rating = '14';
       break;
     
     case 'Cargo Van':
+      $chosen_vehicle_rate = '49.99';
+      $chosen_vehicle_fuel_rating = '17';
       break;
 
+  }
+
+//Assign a UMass standard reim cost, if one of the 'common' locations is used
+if ($use_round_trip == False)
+  {
+    switch ($destination)
+      {
+        case 'Boston':
+        $round_trip_distance = '200';
+        break;
+        
+        case 'Bradley Intl':
+        $round_trip_distance = '100';
+        break;
+
+        case 'Shrewsbury':
+        $round_trip_distance = '150';
+        break;
+      }
   }
 
 //fucking doing the math (please do not get on my case about the lack of functions, this was just thrown together)
@@ -181,14 +225,14 @@ $final_cost = $cost_of_fuel_used + $cost_of_rental;
 $final_cost = round($final_cost, 2);
 $final_cost = number_format($final_cost, 2, '.', '');
 
-$reim_final_cost = $reimbursment_rate * $round_trip_distance;
+$reim_final_cost = $reimbursement_rate * $round_trip_distance;
 $reim_final_cost = round($reim_final_cost, 2);
 $reim_final_cost = number_format($reim_final_cost, 2, '.', '');
 
 //crappy print statements
 print "Renting a $vehicle_type type vehicle, at $$cost_of_fuel a gallon, for $days_in_trip day(s), making a $round_trip_distance mile trip will cost your department approximately $$final_cost. <br> <br>";
 
-print "Alternatively, it will cost your department $$reim_final_cost to use a personal vehicle with a federal reimbursment rate of $$reimbursment_rate per mile.";
+print "Alternatively, it will cost your department $$reim_final_cost to use a personal vehicle with a federal reimbursement rate of $$reimbursement_rate per mile.";
 
 
 
