@@ -1,11 +1,9 @@
 require 'capistrano/version'
 load 'deploy' if respond_to?(:namespace) # cap2 differentiator
 
-set(:svn_user) do
-  Capistrano::CLI.ui.ask "Enter a username to access the SVN repository: "
-end
 set :application, "rentalcar"
-set :repository,  "svn+altssh://#{svn_user}@transit-dev.admin.umass.edu/usr/local/svn/rentalcar"
+set :repository,  "git@transit-dev.admin.umass.edu:public-sites/rentalcar.git"
+set :scm, "git"
 
 set :oit_location, "/rentalcar"
 set :deploy_to, "/cwis/http/htdocs#{oit_location}"
