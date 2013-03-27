@@ -7,24 +7,7 @@
     <title>Vehicle Rental Service</title>
     <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
     <link href="stylesheets/base.css" rel="stylesheet" type="text/css">
-<script src="javascript/prototype.js"></script>
-<script type="text/javascript">
-var typedSoFar = new String;
-function konami(e) {
-  //66 is keycode for B, 65 is keycode for A
-  var konami = Event.KEY_UP + "" + Event.KEY_UP + "" + Event.KEY_DOWN + "" + Event.KEY_DOWN;
-  konami += Event.KEY_LEFT + "" + Event.KEY_RIGHT + "" + Event.KEY_LEFT + "" + Event.KEY_RIGHT;
-  konami += '6665';
-  typedSoFar += e.keyCode;
-  if(typedSoFar.include(konami)){
-    window.location = "http://www.yougotrickrolled.com/";
-  }
-}
-
-</script>
-  </head>
-  
-  <body onkeydown="konami(event)">
+  <body>
     <div id="container" >
       <!-- Begin UMass Amherst top banner --> 
       <div id="topbanner"> 
@@ -251,7 +234,7 @@ print "Alternatively, it will cost your department $$reim_final_cost to use a pe
               <div id="footer">
                 <p><br>
                   This page is maintained by <a href="index.html">UMass Transit Services</a>.<br>
-                  &copy; 2009 <a href="http://www.umass.edu/">University of Massachusetts Amherst</a> &#8226; <a href="http://umass.edu/umhome/policies.html">Site Policies</a><br>
+                  &copy; 2013 <a href="http://www.umass.edu/">University of Massachusetts Amherst</a> &#8226; <a href="http://umass.edu/umhome/policies.html">Site Policies</a><br>
                   <br>
                   <img src="images/seal.jpg" id="seal" alt="Seal"></p>
               </div>
