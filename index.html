@@ -16,39 +16,9 @@
     }
     //-->
     </script>
-<script src="javascript/prototype.js"></script>
-<script type="text/javascript">
-var typedSoFar = new String;
-function konami(e) {
-  //66 is keycode for B, 65 is keycode for A
-  var konami = Event.KEY_UP + "" + Event.KEY_UP + "" + Event.KEY_DOWN + "" + Event.KEY_DOWN;
-  konami += Event.KEY_LEFT + "" + Event.KEY_RIGHT + "" + Event.KEY_LEFT + "" + Event.KEY_RIGHT;
-  konami += '6665';
-  typedSoFar += e.keyCode;
-  if(typedSoFar.include(konami)){
-    window.location = "http://www.yougotrickrolled.com/";
-  }
-}
-
-</script>
-<script src="javascript/prototype.js"></script>
-<script type="text/javascript">
-var typedSoFar = new String;
-function konami(e) {
-  //66 is keycode for B, 65 is keycode for A
-  var konami = Event.KEY_UP + "" + Event.KEY_UP + "" + Event.KEY_DOWN + "" + Event.KEY_DOWN;
-  konami += Event.KEY_LEFT + "" + Event.KEY_RIGHT + "" + Event.KEY_LEFT + "" + Event.KEY_RIGHT;
-  konami += '6665';
-  typedSoFar += e.keyCode;
-  if(typedSoFar.include(konami)){
-    window.location = "http://www.yougotrickrolled.com/";
-  }
-}
-
-</script>
   </head>
   
-  <body onkeydown="konami(event)">
+  <body>
     <div id="container" >
       <!-- Begin UMass Amherst top banner --> 
       <div id="topbanner"> 
@@ -82,11 +52,6 @@ function konami(e) {
         <a href="contactus.html">CONTACT US</a>
       </div>
       
-      <!--
-      <div id="newsmenu">
-        <a href="news.html">CLICK HERE FOR IMPORTANT NEWS UPDATES</a>
-      </div>
-      -->
         <table id="intro_table">
           <tbody>
             <tr>
