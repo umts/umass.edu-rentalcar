@@ -7,6 +7,8 @@ set :scm, "git"
 
 set :oit_location, "/rentalcar"
 set :deploy_to, "/cwis/http/htdocs#{oit_location}"
+set :shared_children, []
+set :normalize_asset_timestamps, false
 set :user, "rental"
 set :use_sudo, false
 
@@ -17,77 +19,50 @@ set :copy_remote_dir, deploy_to
 role :app, "webadmin.oit.umass.edu"
 role :web, "webadmin.oit.umass.edu"
 
+after "deploy:setup", "deploy:htaccess"
+
 # Overrides of default tasks:
 namespace :deploy do 
-  desc "Deploys your project. For our non-rails app, this just calls `update'"
-  task :default do
-    update
+  desc <<-DESC
+    This creates a .htaccess file in the deploy directory that redirects
+    requests to the deploy directory (ie /rentalcar) to the current release
+    directory (ie /rentalcar/current) behind-the-scenes.  This wouldn't be
+    necisary if we had controll over the server.
+  DESC
+  task :htaccess do
+    rewrite_file = <<-EOF
+      RewriteEngine On
+      RewriteRule ^/cwis.* #{oit_location}/ [R,L]
+      RewriteRule (.*) #{oit_location}/current/public/$1
+    EOF
+    put rewrite_file, "#{deploy_to}/.htaccess"
   end
-  
+
   desc "Alias for deploy.  A cold-deploy is the same as a 'warm' one for non-rails apps"
   task :cold do
     default
   end
-  
+
   desc <<-DESC
-    Rolls back to a previous version. This is handy if you ever \
-    discover that you've deployed a lemon; `cap rollback' and you're right \
-    back where you were, on the previously deployed version.
+    Clean up old releases. By default, the last 5 releases are kept on each \
+    server (though you can change this with the keep_releases variable). All \
+    other deployed revisions are removed from the servers.
   DESC
+  task :cleanup do
+    count = fetch(:keep_releases, 5).to_i
+
+    #All these acrobatics just because OIT's server doesn't have `xargs`. This is the default:
+    #run "ls -1dt #{releases_path}/* | tail -n +#{count + 1} | #{try_sudo} xargs rm -rf"
+    run "ls -1dt #{releases_path}/* | tail -n +#{count + 1} > #{deploy_to}/CLEANUP"
+    run "while read f; do rm -rf $f; done < #{deploy_to}/CLEANUP"
+    run "rm -f #{deploy_to}/CLEANUP"
+  end
+
   namespace :rollback do
-    task :default do
-      code
+    task :cleanup, :except => { :no_release => true } do
+      run "if [ `ls -l  #{current_path} | sed -e 's/.*-> \\(.*\\)/\\1/'` != #{current_release} ]; then #{try_sudo} rm -rf #{current_release}; fi"
     end
   end
-
-  desc <<-DESC
-    [internal] Touches up the released code. This is called by update_code \
-    after the basic deploy finishes.
-    
-    This task will make the release group-writable (if the :group_writable \
-    variable is set to true, which is the default).
-  DESC
-  task :finalize_update, :except => { :no_release => true } do
-    run "chmod -R g+w #{latest_release}" if fetch(:group_writable, true)
-  end
-  
-  desc <<-DESC
-    Prepares one or more servers for deployment. Before you can use any \
-    of the Capistrano deployment tasks with your project, you will need to \
-    make sure all of your servers have been prepared with `cap deploy:setup'. When \
-    you add a new server to your cluster, you can easily run the setup task \
-    on just that server by specifying the HOSTS environment variable:
-
-      $ cap HOSTS=new.server.com deploy:setup
-
-    It is safe to run this task on servers that have already been set up; it \
-    will not destroy any deployed revisions or data.
-  DESC
-  task :setup, :except => { :no_release => true } do
-    dirs = [deploy_to, releases_path]
-    run "umask 02 && mkdir -p #{dirs.join(' ')}"
-    
-    #This creates a .htaccess file in the deploy directory that redirects
-    #requests to the deploy directory (ie /transit) to the current release
-    #directory (ie /transit/current) behind-the-scenes.  This wouldn't be
-    #necisary if we had controll over the server.
-    rewrite_file = <<-EOF
-      RewriteEngine On
-      RewriteRule ^/cwis.* #{oit_location}/ [R,L]
-      RewriteRule (.*) #{oit_location}/current/$1
-    EOF
-    put rewrite_file, "#{deploy_to}/.htaccess" 
-  end
-  
-  #Tasks available by default with Capistrano that don't do anything for us
-  task :migrate do
-  end
-  task :migrations do
-  end
-  task :restart do
-  end
-  task :start do
-  end
-  task :stop do
-  end
 end
+
+# vi: set filetype=ruby :
