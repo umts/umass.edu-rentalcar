@@ -29,13 +29,6 @@ body
   max-width: 800px;
 }
 
-#container #topbanner #banner_150{
-  float: left;
-  margin: -4px 6px;
-  width: 58px;
-  height 34px;
-}
-
 #container #topbanner #banner_wordmark{
   border: 1pt none ; 
   float: left; 
