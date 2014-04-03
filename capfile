@@ -25,7 +25,6 @@ set :copy_remote_dir, deploy_to
 role :web, "webadmin.oit.umass.edu"
 
 after "deploy:setup", "deploy:htaccess"
-after "deploy:setup", "deploy:shibauth"
 
 namespace :deploy do 
   desc <<-DESC
