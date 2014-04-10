@@ -37,7 +37,7 @@ namespace :deploy do
     rewrite_file = <<-EOF
       RewriteEngine On
       RewriteRule ^/cwis.* #{oit_location}/ [R,L]
-      RewriteRule (.*) #{oit_location}/current/public/$1
+      RewriteRule (.*) #{oit_location}/current/$1
     EOF
     put rewrite_file, "#{deploy_to}/.htaccess"
   end
