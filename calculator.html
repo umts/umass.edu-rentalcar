@@ -70,93 +70,75 @@
               <div id="page_title">Rental Cost Calculator</div>
               <div id="page_text_field">
                 <form action="calc.php" method="post">
-                <table>
-                  <tr>
-                    <td>Vehicle Type:</td>
-                  <td>
-                    <select name="vehicle_type">
-                      <option>Compact</option>
-                      <option>Intermediate</option>
-                      <option>Standard</option>
-                      <option>Full Size</option>
-                      <option>Premium</option>
-                      <option>Pickup Truck</option>
-                      <option>Minivan</option>
-                      <option>SUV</option>
-                      <option>12 Pax Van</option>
-                      <option>Cargo Van</option>
-                    </select>
-                  </td>
-                </tr>
-                <tr>
-                  <td>Total days in Trip:</td>
-                  <td><input type="text" name="days_in_trip"></input></td>
-                </tr>
+                  <table>
+                    <tr>
+                      <td>Vehicle Type:</td>
+                      <td>
+                        <select name="vehicle_type">
+                          <option>Compact</option>
+                          <option>Intermediate</option>
+                          <option>Standard</option>
+                          <option>Full Size</option>
+                          <option>Premium</option>
+                          <option>Pickup Truck</option>
+                          <option>Minivan</option>
+                          <option>SUV</option>
+                          <option>12 Pax Van</option>
+                          <option>Cargo Van</option>
+                        </select>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>Total days in Trip:</td>
+                      <td><input type="text" name="days_in_trip"></input></td>
+                    </tr>
+                    <tr>
+                      <td>Destination:</td>
+                      <td>
+                        <select name="dest">
+                          <option>Boston</option>
+                          <option>Bradley Intl</option>
+                          <option>Shrewsbury</option>
+                        </select>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>Or use a round trip distance:</td>
+                      <td>
+                        <input type="checkbox" value="use_distance" name="use_distance_instead"></input>
+                        <input type="text" name="distance"></input>(Miles)
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>Cost of Fuel:</td>
+                      <td><input type="text" name="cost_of_fuel"></input>(Dollars)</td>
+                    </tr>
+                    <tr>
+                      <td>Reimbursement Rate:</td>
+                      <td><input type="text" value="0.555" name="reim_rate"></input>(Dollars)</td>
+                    </tr>
+                    <tr>
+                      <td></td>
+                      <td>
+                        <input type="submit" value="Make Estimate"></input>
+                      </td>
+                    </tr>
+                  </table>
+                </form>
+                <br>
+                <br>
 
-                <tr>
-                  <td>Destination:</td>
-                  <td>
-                    <select name="dest">
-                      <option>Boston</option>
-                      <option>Bradley Intl</option>
-                      <option>Shrewsbury</option>
-                    </select>
-                  </td>
-                </tr>
-
-                <tr>
-                  <td></td>
-                  <td>Or use a round trip distance:</td>
-                  <td><input type="checkbox" value="use_distance" name="use_distance_instead"></input></td>
-                  <td><input type="text" name="distance"></input></td>
-                  <td>(Miles)</td>
-                </tr>
-
-                <tr>
-                  <td>Cost of Fuel:</td>
-                  <td><input type="text" name="cost_of_fuel"></input></td>
-                  <td>(Dollars)</td>
-                </tr>
-
-                <tr>
-                  <td>Reimbursement Rate:</td>
-                  <td><input type="text" value="0.555" name="reim_rate"></input></td>
-                  <td>(Dollars)</td>
-                </tr>
-
-                <!--<tr>
-                  <td></td>
-                  <td></td>
-                </tr>
-
-                <tr>
-                  <td></td>
-                  <td></td>
-                </tr>-->
-
-                <tr>
-                  <td>
-                    <input type="submit" value="Make Estimate"></input>
-                  </td>
-                </tr>
-
-              </table>
-            </form>
-
-            <br>
-            <br>
-
-            For mileage and fuel cost information:
-            <ul>
-              <li><a href="http://www.fuelgaugereport.com/">AAA Daily Fuel Report</a><br></li>
-              <li><a href="http://maps.google.com/">Google Maps</a><br></li>
-              <li><a href="http://www.mapquest.com/">MapQuest</a><br></li>
-              <li><a href="http://www.irs.gov/taxpros/article/0,,id=156624,00.html">IRS Mileage Reimbursement Rate</a></li>
-            </ul>
-            <p>
-              For more information on University Travel, contact <a href="http://www.umass.edu/travel">Travel Services</a>.
-            </p>
-          </div>
+                For mileage and fuel cost information:
+                <ul>
+                  <li><a href="http://www.fuelgaugereport.com/">AAA Daily Fuel Report</a><br></li>
+                  <li><a href="http://maps.google.com/">Google Maps</a><br></li>
+                  <li><a href="http://www.mapquest.com/">MapQuest</a><br></li>
+                  <li><a href="http://www.irs.gov/taxpros/article/0,,id=156624,00.html">IRS Mileage Reimbursement Rate</a></li>
+                </ul>
+                <p>
+                  For more information on University Travel, contact <a href="http://www.umass.edu/travel">Travel Services</a>.
+                </p>
+              </div>
             </td>
           </tr>
         </tbody>
@@ -180,4 +162,3 @@
   </div>
   </body>
 </html>
-
