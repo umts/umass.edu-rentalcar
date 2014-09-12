@@ -12,14 +12,8 @@ set :normalize_asset_timestamps, false
 set :user, "rental"
 set :use_sudo, false
 
-#Transit's people.umass.edu account
-set :people_user, "transit"
-set :people_location, "public_html/rentalcar/"
-set :people_host, "webadmin.oit.umass.edu"
-
 set :deploy_via, :copy
 set :copy_strategy, :export
-set :copy_exclude, 'enterprise-redirect'
 set :copy_remote_dir, deploy_to
 
 role :web, "webadmin.oit.umass.edu"
@@ -40,20 +34,6 @@ namespace :deploy do
       RewriteRule (.*) #{oit_location}/current/$1
     EOF
     put rewrite_file, "#{deploy_to}/.htaccess"
-  end
-
-  desc <<-DESC
-    puts the files neccisary to do the Shibboleth-guarded redirect to
-    Enterprise in place. These files are in the `public_html` directory
-    in the **transit** user's home directory.
-  DESC
-  task :shibauth do
-    options = {
-      :hosts => [ Capistrano::ServerDefinition.new(people_host, { :user => people_user }) ]
-    }
-    puts 'Enter the password for the ' + Capistrano::CLI.ui.color(people_user, :magenta ) + ' user:'
-    run("mkdir -p #{people_location}", options)
-    top.upload('enterprise-redirect', people_location, options )
   end
 
   desc "Alias for deploy.  A cold-deploy is the same as a 'warm' one for non-rails apps"
