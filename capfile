@@ -30,7 +30,7 @@ namespace :deploy do
   task :htaccess do
     rewrite_file = <<-EOF
       RewriteEngine On
-      RewriteRule ^/cwis.* #{oit_location}/ [R,L]
+      RewriteCond %{REQUEST_URI} !^#{oit_location}/current/
       RewriteRule (.*) #{oit_location}/current/$1
     EOF
     put rewrite_file, "#{deploy_to}/.htaccess"
