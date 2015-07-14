@@ -1,2 +1,2 @@
 RewriteEngine On
-RewriteRule ^.*$ http://umass.edu/transportation/car-rentals [R,L]
+RewriteRule ^.*$ http://umass.edu/transportation/car-rentals [R=301,L]
