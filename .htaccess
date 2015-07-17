@@ -1,2 +1,3 @@
 RewriteEngine On
+RewriteCond %{REQUEST_URI} !^/rentalcar/enterprise/(index.html)?$
 RewriteRule ^.*$ http://umass.edu/transportation/car-rentals [R=301,L]
